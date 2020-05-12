@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Libera Bank</title>
+  <link href="styles/index.css" rel="stylesheet">
+</head>
+<body>
+  <h1>Welcome to Libera Bank</h1>
+  {{#with till}}
+  <div class="till">
+    <h3>Current till contains ${{total}}</h3>
+    <dl>
+      <dt>Pennies:</dt>
+      <dd class="view">{{pennies}}</dd>
+      <dd class="edit"><input id="pennies" type="number" value="{{pennies}}"></dd>
+      <br>
+      <dt>Nickles:</dt>
+      <dd class="view">{{nickles}}</dd>
+      <dd class="edit"><input id="nickles" type="number" value="{{nickles}}"></dd>
+      <br>
+      <dt>Dimes:</dt>
+      <dd class="view">{{dimes}}</dd>
+      <dd class="edit"><input id="dimes" type="number" value="{{dimes}}"></dd>
+      <br>
+      <dt>Quarters:</dt>
+      <dd class="view">{{quarters}}</dd>
+      <dd class="edit"><input id="quarters" type="number" value="{{quarters}}"></dd>
+      <br>
+      <dd class="edit">
+        <input type="submit" value="Save" onclick="save()">
+        <input type="submit" value="Cancel" onclick="cancel()">
+      </dd>
+    </dl>
+    {{/with}}
+    <div class="till-actions">
+      <input class="add styled" type="button" value="Add coins to till">
+      <input class="empty styled" type="button" value="Empty the till">
+    </div>
+  </div>
+
+  <div class="change-machine">
+    <h3>Change machine</h3>
+    <div class="change">
+      <input id="deposit" placeholder="0.0" step="0.01" min="0" max="10">
+      <input class="change styled" type="submit" value="Make change" onclick="makeChange()">
+      <p id="return-change" class="edit">Your change is:</p>
+      <div class="change-list">
+        {{#if coins.[0] }}
+        <p>Quarters: {{coins.[0]}}</p>
+        {{/if}}
+        {{#if coins.[1] }}
+        <p>Dimes: {{coins.[1]}}</p>
+        {{/if}}
+        {{#if coins.[2] }}
+        <p>Nickles: {{coins.[1]}}</p>
+        {{/if}}
+        {{#if coins.[3] }}
+        <p>Pennies: {{coins.[3]}}</p>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="scripts/till.js"></script>
+  <script src="scripts/change.js"></script>
+</body>
+</html>
